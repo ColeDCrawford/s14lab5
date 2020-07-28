@@ -1,6 +1,5 @@
 from dotenv import load_dotenv
 from flask import Flask, flash, render_template, request, url_for, redirect, jsonify, session
-from flask_login import current_user
 from models.models import Db, User, Post
 from forms.forms import SignupForm, LoginForm, NewpostForm
 from os import environ
