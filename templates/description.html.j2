@@ -1,0 +1,15 @@
+{% extends "layout.html.j2" %}
+
+{% block styles %}
+    <link href="{{ url_for('static', filename='./css/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+    <h1>CS S-14a Blog Application</h1>
+    <p>This is a simple blog application. Users can register for an account and post blog posts. If they are logged in, their posts are displayed first; otherwise all posts are displayed. Posts can have both a title and content, and are sorted by the most recent post first. The application utilizes message flashing for basic feedback about user actions, such as successful logins or blog posts, login errors, etc.</p>
+
+{% endblock %}

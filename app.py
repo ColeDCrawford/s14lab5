@@ -128,3 +128,7 @@ def signup():
     # IF GET
     else:
         return render_template('signup.html.j2', title='Signup', form=form)
+
+@app.route('/description', methods=['GET'])
+def description():
+    return render_template('description.html.j2')
