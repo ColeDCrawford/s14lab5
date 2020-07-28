@@ -1,0 +1,70 @@
+{% extends "layout.html.j2" %}
+
+{% block styles %}
+    <link href="{{ url_for('static', filename='./css/index.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% block content %}
+
+    {% if session_username is defined %}
+
+        <h1>Hi, {{ session_username }} !</h1>
+
+    {% else %}
+
+        <h1>Hi, guest!</h1>
+
+    {% endif %}
+
+    {% if user_posts|length >= 1 %}
+    <div id="user-posts" class="posts">
+        <h2>My Posts</h2>
+        {% for p in user_posts %}
+            <div class="post">
+                <h3>{{ p.title if p.title != None else 'No Title'}}</h3>
+                <div>Published by {{ p.user.username }} {% if p.created_date is not none %} on {{ p.created_date.strftime('%Y-%m-%d')}} {% endif %}</div>
+                <div>{{ p.content }}</div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if other_posts is defined %}
+    <div id="other_posts" class="posts">
+        <h2>Blog Posts</h2>
+        {% for p in other_posts %}
+            <div class="post">
+                <h3>{{ p.title if p.title != None else 'No Title'}}</h3>
+                <div>Published by {{ p.user.username }} {% if p.created_date is not none %} on {{ p.created_date.strftime('%Y-%m-%d')}} {% endif %}</div>
+                <div>{{ p.content }}</div>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+
+    <div id="forms">
+        {% if session_username is defined %}
+
+            <form action="/logout" method="POST">
+                <button type="submit" class="btn btn-secondary"> Log out</button>
+            </form>
+
+            <form action="/newpost" method="GET">
+                <button type="submit" class="btn btn-success"> New Post</button>
+            </form>
+
+        {% else %}
+            <form action="/login" method="GET">
+                <button type="submit" class="btn btn-primary"> Log in</button>
+            </form>
+            <form action="/signup" method="GET">
+                <button type="submit" class="btn btn-primary"> Sign up</button>
+            </form>
+        {% endif %}
+    </div>
+
+{% endblock %}
