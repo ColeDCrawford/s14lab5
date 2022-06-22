@@ -6,7 +6,7 @@ psycopg2==2.8.5
 psycopg2-binary==2.7.7
 flask-heroku==0.1.9
 pandas==1.0.5
-numpy==1.19.0
+numpy==1.22.0
 python-dotenv==0.8.2
 passlib==1.7.2
 WTForms==2.2.1
